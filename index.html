@@ -8,6 +8,13 @@
     <!-- Favicon Logo -->
     <link rel="icon" type="image/png" href="https://pub-508ef1e45bab487aadde85a1dba202c4.r2.dev/rorraxyfree/rorraxy.png">
 
+    <!-- ================= PWA ও মেটা সেটআপ ================= -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#030305">
+    <link rel="apple-touch-icon" href="https://pub-508ef1e45bab487aadde85a1dba202c4.r2.dev/rorraxyfree/rorraxy.png">
+    <meta http-equiv="Permissions-Policy" content="camera=*, microphone=*, geolocation=*">
+    <!-- ========================================================= -->
+
     <script src="/ecosystem-core.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1086,6 +1093,24 @@
                 }
             }
         });
+    </script>
+
+    <!-- ========================================== -->
+    <!-- PWA Popup & Service Worker Registration -->
+    <!-- ========================================== -->
+    <script src="popup.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker Registered Successfully');
+                    })
+                    .catch(error => {
+                        console.log('Service Worker Registration Failed:', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
